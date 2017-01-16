@@ -6,11 +6,19 @@ var prompt = require("prompt");
 
 prompt.start();
 
-console.log("Enter two numbers")
+console.log("Enter two numbers");
+
 var firstNum = prompt.get(["n1", "n2"] ,function(err,result){
-    if(err || !result || !result.n1 || !result.n2) console.log(" No values inserted");
-    else if(isNaN(result.n1) || isNaN(result.n2) ) {
-        console.log("Works with numbers only");
+
+    if(err || !result || !result.n1 || !result.n2) {
+        console.log(" Bad input");
+        return;
     }
-    else console.log("Largest is " + ( result.n1 > result.n2 ? result.n1 : result.n2));
+
+    if(isNaN(result.n1) || isNaN(result.n2) ) {
+        console.log("Works with numbers only");
+        return;
+    }
+
+    console.log("Largest number is " + ( result.n1 > result.n2 ? result.n1 : result.n2));
 });
